@@ -1,42 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main()
+int main() 
 {
 
     char nomeProduto[99][200];
-    float preco[99];
-    int quantidade[99];
-    int i = 0;
-    int j = 0;
-    int resposta = 0;
-    float totalVendas = 0;
+    float preco[99], totalVendas = 0;
+    int quantidade[99], l = 0, codigo = 0;
 
-    do
-    {
-        printf("1. Para continuar cadastrando\n");
-        printf("2. Para encerrar e mostrar os números\n");
-        scanf("%d", &resposta);
-       
+    do {
+        printf("\nLOJA\n");
+        printf("1- Para adicionar venda\n");
+        printf("2- Para exibir total de vendas\n");
+        printf("Informe o código desejado: ");
+        scanf("%d", &codigo);
+        
 
-        if (resposta == 1)
-
-        {
-            printf("Digite o nome do produto: ");
-            scanf("%s", &nomeProduto[i]);
+        if (codigo == 1) {
+            printf("\nDigite o nome do produto: ");
+            scanf("%s", &nomeProduto[l]);
 
             printf("Digite o valor do produto: ");
-            scanf("%f", &preco[i]);
+            scanf("%f", &preco[l]);
 
             printf("Digite a quantidade do produto: ");
-            scanf("%d", &quantidade[i]);
-            totalVendas = totalVendas + preco[i];
-            i = i + 1;
+            scanf("%d", &quantidade[l]);
+
+            totalVendas = totalVendas + preco[l] * quantidade[l];
+            l++;
+
+        } else if (codigo == 2) {
+            printf("\nTotal de vendas: R$ %.1f\n", totalVendas);
         }
 
-    } while (resposta == 1);
-
-    printf("Total de vendas foi de R$ %.1f\n", totalVendas);
-
+    } while (codigo == 1);
+ 
     return 0;
+
 }
