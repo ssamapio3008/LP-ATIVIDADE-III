@@ -2,48 +2,52 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-int main()
+int main() 
 {
 
-    char nomes[99][200];
-    char telefones[99][200];
-    int i = 0;
-    int j = 0;
-    int resp = 0;
 
-    do
-    {
-        printf("1 - Para continuar cadastrando\n");
-        printf("2 - Para encerrar e mostrar os números\n");
-        scanf("%d", &resp);
-        puts("");
+    
+    int codigo, l = 0, c = 0;
+    char nomes[250][250];
+    char numero[250][250];
 
-        if (resp == 1)
-        {
-            printf("Digite o %d° nome: ", i + 1);
-            scanf("%s", &nomes[i]);
+    
+    do {
+        printf("QUAL OPÇÃO VOCÊ DESEJA?\n");
+        printf("1 - Adicionar um número \n2 - Encerrar programa \n");
+        printf("Escolha uma das opções: ");
+        scanf("%d", &codigo);
 
-            printf("Digite o %d° telefone: ", i + 1);
-            scanf("%s", &telefones[i]);
+        switch (codigo) {
+        case 1:
+            
+            printf("\nInforme o nome para contato: ");
+            gets(nomes[c]);
+            printf("Informe o número de contato: ");
+            scanf("%s", &numero[c]);
+            printf("\n");
 
-            fflush(stdin);
+            c++;
 
-            i = i + 1;
+            break;
+        case 2:
+            
+            for (l = 0; l < c; l++) {
+                printf("LISTA TELEFÔNICA\n");
+                printf("%dº Contato\n", l + 1);
+                printf("Nome: %s\n", nomes[l]);
+                printf("Número: %s\n", numero[l]);
+                printf("\n");
+            }
+
+            break;
+
         }
 
-    } while (resp == 1);
-
-    system ("cls || clear");
-
-    for (j = 0; j <= i; j++)
-    {
-        printf("%d° Cadastro\n", j + 1);
-        printf("Nome: %s\n", nomes[j]);
-        printf("Telefone: %s\n", telefones[j]);
-
-       
-    }
+    } while (codigo == 1);
 
     return 0;
+
 }
+           
+   
